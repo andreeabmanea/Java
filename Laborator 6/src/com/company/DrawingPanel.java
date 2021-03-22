@@ -35,7 +35,7 @@ public class DrawingPanel extends JPanel {
     }
     private void drawShape(int x, int y) {
         int radius = rand.nextInt(100); //generate a random number
-        int sides = 5; //...TODO //get the value from UI (in ConfigPanel)
+        int sides = ConfigPanel.input;
         Color color = new Color(1f,0f,0f,.5f ); //create a transparent random Color.
         graphics.setColor(color);
         graphics.fill(new RegularPolygon(x, y, radius, sides));
