@@ -4,10 +4,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+
+import static com.company.DrawingPanel.H;
 
 public class ControlPanel extends JPanel {
     final MainFrame frame;
@@ -27,18 +32,19 @@ public class ControlPanel extends JPanel {
     private void init() {
         //we set where our images will be saved or load
 
-        setLayout(new GridLayout(1, 4));
+        setLayout(new GridLayout(1, 5));
         add(saveBtn);
         add(loadBtn);
         add(resetBtn);
         add(exitBtn);
+
         //configure listeners for all buttons
         saveBtn.addActionListener(this::save);
         loadBtn.addActionListener(this::load);
         resetBtn.addActionListener(this::reset);
 
-
     }
+
 
     private void save(ActionEvent e) {
         try {
@@ -65,7 +71,7 @@ public class ControlPanel extends JPanel {
     }
 
     private void reset(ActionEvent e) {
-
+        frame.canvas.clearCanvas();
     }
 }
 
