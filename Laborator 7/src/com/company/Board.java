@@ -1,18 +1,20 @@
 package com.company;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Board {
-    Map<Integer, Integer> pair;
+    List<Token> gameTokens;
     Random rand = new Random();
     int nTokens = 5;
     int[][] values;
 
     public Board() {
-        pair = new HashMap<>();
+
         values = new int[nTokens][nTokens];
+        gameTokens = new ArrayList<>();
 
     }
 
@@ -33,18 +35,22 @@ public class Board {
     }
 
     public void selectTokensForGame(){
-        Token token = new Token();
-        int copy = nTokens;
-        while (copy >= 0) {
-            token.firstNumber = rand.nextInt(nTokens);
-            token.secondNumber = rand.nextInt(nTokens);
+
+        int nCopy = nTokens;
+        while (nCopy > 0) {
+            Token token = new Token();
+            token.firstNumber = rand.nextInt(nTokens) + 1;
+            token.secondNumber = rand.nextInt(nTokens) + 1;
             while (token.firstNumber == token.secondNumber)
-                token.secondNumber = rand.nextInt(nTokens);
+                token.secondNumber = rand.nextInt(nTokens) + 1;
+            token.value = values[token.firstNumber - 1][token.secondNumber - 1];
             System.out.println(token.firstNumber + " " + token.secondNumber);
-            pair.put(token.firstNumber, token.secondNumber);
-            copy--;
+            nCopy--;
+            gameTokens.add(token);
         }
-        System.out.println(pair);
+
+        System.out.println(gameTokens);
+
     }
 
 }

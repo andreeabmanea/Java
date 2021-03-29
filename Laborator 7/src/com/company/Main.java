@@ -7,5 +7,8 @@ public class Main {
 	b.generateAllTokens();
 	b.printTokenValues();
 	b.selectTokensForGame();
+
+	Runnable runnable = new Player("Andreea");
+	new Thread(runnable).start();
     }
 }

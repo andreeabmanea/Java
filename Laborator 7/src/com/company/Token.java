@@ -1,9 +1,16 @@
 package com.company;
 
-import java.util.Map;
-
 public class Token {
     int value;
     int firstNumber;
     int secondNumber;
+
+    @Override
+    public String toString() {
+        return "Token{" +
+                "value=" + value +
+                ", firstNumber=" + firstNumber +
+                ", secondNumber=" + secondNumber +
+                '}';
+    }
 }
