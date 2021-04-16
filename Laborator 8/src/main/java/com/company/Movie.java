@@ -9,8 +9,9 @@ public class Movie {
     int duration;
     double score;
 
-    public Movie(int movieId, String title, Date release_date, int duration, double score) {
-        this.id = movieId;
+    public Movie(){}
+
+    public Movie(String title, Date release_date, int duration, double score) {
         this.title = title;
         this.release_date = release_date;
         this.duration = duration;
@@ -55,5 +56,16 @@ public class Movie {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", release_date=" + release_date +
+                ", duration=" + duration +
+                ", score=" + score +
+                '}';
     }
 }
