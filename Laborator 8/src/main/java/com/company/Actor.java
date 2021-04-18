@@ -3,15 +3,15 @@ package com.company;
 public class Actor {
     String stageName;
     String country;
-    String characterName;
+    String dateOfBirth;
 
     public Actor() {
     }
 
-    public Actor(String stageName, String characterName, String country) {
+    public Actor(String stageName, String dateOfBirth, String country) {
         this.stageName = stageName;
         this.country = country;
-        this.characterName = characterName;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getStageName() {
@@ -30,11 +30,11 @@ public class Actor {
         this.country = country;
     }
 
-    public String getCharacterName() {
-        return characterName;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

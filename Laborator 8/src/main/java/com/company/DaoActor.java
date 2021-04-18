@@ -9,11 +9,11 @@ public class DaoActor {
 
     public int addActor(Actor actor) throws SQLException {
 
-        String query = "INSERT INTO actors (actor_name, character_name, country)"+" VALUES (?, ?, ?)";
+        String query = "INSERT INTO actors (actor_name, country, date_of_birth)"+" VALUES (?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, actor.getStageName());
-        ps.setString(2, actor.getCharacterName());
-        ps.setString(3, actor.getCountry());
+        ps.setString(2, actor.getCountry());
+        ps.setString(3, actor.getDateOfBirth());
         ps.executeUpdate("use bd;");
         return ps.executeUpdate();
     }
