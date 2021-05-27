@@ -1,24 +1,43 @@
 package com;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SetLocale {
 
-    public static void setLocale(Locale locale) {
+    private ResourceBundle messages;
+    static List<String> locales = Arrays.asList("ro", "en_GB");
+    String language;
+    String country;
 
+    public static List<String> getLocales() {
+        return locales;
+    }
+
+    public SetLocale() {
+
+    }
+
+    public void setLocale(String input) {
+        if (locales.contains(input)) {
+            List<String> inputSplit = Arrays.asList(input.split("-"));
+            language = inputSplit.get(0);
+            country = inputSplit.get(0);
+        } else {
+            language = "en";
+            country = "GB";
+        }
+        Locale.setDefault(new Locale(language, country));
         String baseName = "res/Messages";
-        ResourceBundle messages = ResourceBundle.getBundle(baseName, locale);
+        Locale locale = Locale.getDefault();
+        messages = ResourceBundle.getBundle(baseName, locale);
+        Object[] argument = {locale};
         String pattern = messages.getString("locale.set");
-        Object[] arguments = {"ro"};
-        Locale.setDefault(new Locale("ro"));
-        String currentLocale = new MessageFormat(pattern).format(arguments);
+        String currentLocale = new MessageFormat(pattern).format(argument);
         System.out.println(currentLocale);
-        Locale.forLanguageTag("ro");
     }
 
-    public static void main(String[] args) {
-        setLocale(Locale.forLanguageTag("ro"));
-    }
 }

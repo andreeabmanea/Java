@@ -1,24 +1,23 @@
 package com;
 
-import java.io.IOException;
-import java.text.MessageFormat;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DisplayLocales {
 
+    static List<String> available = new ArrayList<>();
+
     public static void displayLocales() {
         String baseName = "res/Messages";
-        ResourceBundle messages = ResourceBundle.getBundle(baseName);
-        System.out.println(messages.getString("locales"));
-        Locale availableLocales[] = Locale.getAvailableLocales();
-        for (Locale locale : availableLocales) {
-            System.out.println(locale.getCountry() + "\t" + locale.getDisplayLanguage(locale));
+        Locale locale = Locale.getDefault();
+        ResourceBundle messages = ResourceBundle.getBundle(baseName, locale);
+        String locales = messages.getString("locales");
+        System.out.println(locales);
+        for (String loc : SetLocale.getLocales()) {
+            available.add(loc);
         }
-    }
-
-    public static void main(String args[]) throws IOException {
-        displayLocales();
+        System.out.println(available.toString());
     }
 }
